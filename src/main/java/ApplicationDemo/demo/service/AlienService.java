@@ -4,6 +4,7 @@ import ApplicationDemo.demo.model.Alien;
 import ApplicationDemo.demo.repo.AlienRepo;
 import com.mysql.cj.xdevapi.StreamingSqlResultBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,8 @@ import java.util.Optional;
 @Service
 public class AlienService {
 
+    @Lazy
+    @Autowired
     private final AlienRepo alienRepo;
 
     @Autowired
@@ -37,12 +40,12 @@ public class AlienService {
         return alienRepo.update(id, alien);
     }
 
-//    public Alien update(int id, Alien alien) {
-//        Alien existingAlien = findById(id);
-//        existingAlien.setName(alien.getName());
-//        existingAlien.setTech(alien.getTech());
-//        return save(existingAlien);
-//    }
+    public Alien updates(int id, Alien alien) {
+        Alien existingAlien = findById(id);
+        existingAlien.setName(alien.getName());
+        existingAlien.setTech(alien.getTech());
+        return save(existingAlien);
+    }
 
     public Alien updateby(int id, String name) {
         Alien existingAlien = findById(id);

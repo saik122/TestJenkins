@@ -3,6 +3,7 @@ package ApplicationDemo.demo.controller;
 import ApplicationDemo.demo.model.Alien;
 import ApplicationDemo.demo.service.AlienService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/aliens")
 public class AlienController {
-
+    @Lazy
+    @Autowired
     private final AlienService alienService;
 
     @Autowired
